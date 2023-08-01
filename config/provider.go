@@ -7,15 +7,15 @@ package config
 import (
 	// Note(turkenh): we are importing this to embed provider schema document
 	_ "embed"
+	"github.com/spot/provider-spot/config/aksnp"
+	"github.com/spot/provider-spot/config/oceanaws"
 
 	ujconfig "github.com/upbound/upjet/pkg/config"
-
-	"github.com/upbound/upjet-provider-template/config/null"
 )
 
 const (
-	resourcePrefix = "template"
-	modulePath     = "github.com/upbound/upjet-provider-template"
+	resourcePrefix = "spot"
+	modulePath     = "github.com/spot/provider-spot"
 )
 
 //go:embed schema.json
@@ -35,7 +35,9 @@ func GetProvider() *ujconfig.Provider {
 
 	for _, configure := range []func(provider *ujconfig.Provider){
 		// add custom config functions
-		null.Configure,
+		//null.Configure,
+		oceanaws.Configure,
+		aksnp.Configure,
 	} {
 		configure(pc)
 	}
