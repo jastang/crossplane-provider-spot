@@ -9,6 +9,8 @@ import (
 
 	"github.com/upbound/upjet/pkg/controller"
 
+	aksnp "github.com/spot/provider-spot/internal/controller/aksnp/aksnp"
+	aws "github.com/spot/provider-spot/internal/controller/oceanaws/aws"
 	providerconfig "github.com/spot/provider-spot/internal/controller/providerconfig"
 )
 
@@ -16,6 +18,8 @@ import (
 // the supplied manager.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
+		aksnp.Setup,
+		aws.Setup,
 		providerconfig.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {

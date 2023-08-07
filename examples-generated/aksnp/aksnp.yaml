@@ -1,0 +1,75 @@
+apiVersion: aksnp.spot.upbound.io/v1alpha1
+kind: AksNp
+metadata:
+  annotations:
+    meta.upbound.io/example-id: aksnp/v1alpha1/aksnp
+  labels:
+    testing.upbound.io/example-name: example
+  name: example
+spec:
+  forProvider:
+    aksClusterName: test-cluster
+    aksInfrastructureResourceGroupName: MC_TestResourceGroup_test-cluster_eastus
+    aksRegion: eastus
+    aksResourceGroupName: TestResourceGroup
+    autoscaler:
+    - autoscaleDown:
+      - maxScaleDownPercentage: 30
+      autoscaleHeadroom:
+      - automatic:
+        - percentage: 5
+      autoscaleIsEnabled: true
+      resourceLimits:
+      - maxMemoryGib: 1500
+        maxVcpu: 750
+    availabilityZones:
+    - "1"
+    - "2"
+    - "3"
+    controllerClusterId: test-123124
+    enableNodePublicIp: true
+    fallbackToOndemand: true
+    filters:
+    - architectures:
+      - X86_64
+      maxMemoryGib: 18
+      maxVcpu: 16
+      minMemoryGib: 10
+      minVcpu: 2
+      series:
+      - D v3
+      - Dds_v4
+      - Dsv2
+    headrooms:
+    - cpuPerUnit: 1024
+      gpuPerUnit: 0
+      memoryPerUnit: 512
+      numOfUnits: 2
+    health:
+    - gracePeriod: 600
+    labels:
+      key: env
+      value: test
+    maxCount: 100
+    maxPodsPerNode: 30
+    minCount: 1
+    name: test
+    osDiskSizeGb: 30
+    osDiskType: Managed
+    osType: Linux
+    scheduling:
+    - shutdownHours:
+      - isEnabled: true
+        timeWindows:
+        - Sat:08:00-Sun:08:00
+    spotPercentage: 50
+    tags:
+      tagKey: env
+      tagValue: staging
+    taints:
+    - effect: NoSchedule
+      key: taintKey
+      value: taintValue
+
+---
+

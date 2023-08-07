@@ -10,7 +10,9 @@ package apis
 import (
 	"k8s.io/apimachinery/pkg/runtime"
 
-	v1alpha1 "github.com/spot/provider-spot/apis/v1alpha1"
+	v1alpha1 "github.com/spot/provider-spot/apis/aksnp/v1alpha1"
+	v1alpha1oceanaws "github.com/spot/provider-spot/apis/oceanaws/v1alpha1"
+	v1alpha1apis "github.com/spot/provider-spot/apis/v1alpha1"
 	v1beta1 "github.com/spot/provider-spot/apis/v1beta1"
 )
 
@@ -18,6 +20,8 @@ func init() {
 	// Register the types with the Scheme so the components can map objects to GroupVersionKinds and back
 	AddToSchemes = append(AddToSchemes,
 		v1alpha1.SchemeBuilder.AddToScheme,
+		v1alpha1oceanaws.SchemeBuilder.AddToScheme,
+		v1alpha1apis.SchemeBuilder.AddToScheme,
 		v1beta1.SchemeBuilder.AddToScheme,
 	)
 }
