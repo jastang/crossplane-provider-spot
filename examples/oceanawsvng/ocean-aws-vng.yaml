@@ -1,0 +1,15 @@
+apiVersion: oceanawsvng.spot.upbound.io/v1alpha1
+kind: AwsLaunchSpec
+metadata:
+  annotations:
+    meta.upbound.io/example-id: oceanawsvng/v1alpha1/awslaunchspec
+  labels:
+    testing.upbound.io/example-name: example
+  name: testvng
+spec:
+  forProvider:
+    oceanId: o-123456
+    name: testvng
+    tags:
+      - key: Env
+        value: dev

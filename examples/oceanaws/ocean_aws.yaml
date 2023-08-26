@@ -1,0 +1,23 @@
+apiVersion: oceanaws.spot.upbound.io/v1alpha1
+kind: Aws
+metadata:
+  name: hello-crossplane
+spec:
+  forProvider:
+      name: hello-crossplane
+      controllerId: clusterControllerId
+      desiredCapacity: 2
+      region: us-west-2
+      subnetIds:
+        - subnet-123456
+        - subnet-654321
+        - subnet-98765
+        - subnet-56789
+      whitelist:
+        - t2.micro
+      securityGroups:
+        - sg-123456789
+      iamInstanceProfile: eks-123456789
+      imageId: ami-123456789
+  providerConfigRef:
+    name: default

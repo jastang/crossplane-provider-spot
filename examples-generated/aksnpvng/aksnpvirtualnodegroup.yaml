@@ -1,0 +1,54 @@
+apiVersion: aksnpvng.spot.upbound.io/v1alpha1
+kind: AksNpVirtualNodeGroup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: aksnpvng/v1alpha1/aksnpvirtualnodegroup
+  labels:
+    testing.upbound.io/example-name: example
+  name: example
+spec:
+  forProvider:
+    availabilityZones:
+    - "1"
+    - "2"
+    - "3"
+    enableNodePublicIp: true
+    fallbackToOndemand: true
+    filters:
+    - architectures:
+      - X86_64
+      maxMemoryGib: 16
+      maxVcpu: 16
+      minMemoryGib: 8
+      minVcpu: 2
+      series:
+      - D v3
+      - F
+      - E v4
+    headrooms:
+    - cpuPerUnit: 1024
+      gpuPerUnit: 0
+      memoryPerUnit: 512
+      numOfUnits: 2
+    labels:
+      key: env
+      value: test
+    maxCount: 100
+    maxPodsPerNode: 30
+    minCount: 1
+    name: testVng
+    oceanId: o-134abcd
+    osDiskSizeGb: 30
+    osDiskType: Managed
+    osType: Linux
+    spotPercentage: 50
+    tags:
+      tagKey: env
+      tagValue: staging
+    taints:
+    - effect: NoSchedule
+      key: taintKey
+      value: taintValue
+
+---
+

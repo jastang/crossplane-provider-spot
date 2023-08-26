@@ -8,7 +8,9 @@ import (
 	// Note(turkenh): we are importing this to embed provider schema document
 	_ "embed"
 	"github.com/spot/provider-spot/config/aksnp"
+	"github.com/spot/provider-spot/config/aksnpvng"
 	"github.com/spot/provider-spot/config/oceanaws"
+	"github.com/spot/provider-spot/config/oceanawsvng"
 
 	ujconfig "github.com/upbound/upjet/pkg/config"
 )
@@ -38,6 +40,8 @@ func GetProvider() *ujconfig.Provider {
 		//null.Configure,
 		oceanaws.Configure,
 		aksnp.Configure,
+		aksnpvng.Configure,
+		oceanawsvng.Configure,
 	} {
 		configure(pc)
 	}

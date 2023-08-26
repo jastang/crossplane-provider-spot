@@ -1,0 +1,15 @@
+apiVersion: aksnpvng.spot.upbound.io/v1alpha1
+kind: AksNpVirtualNodeGroup
+metadata:
+  annotations:
+    meta.upbound.io/example-id: aksnpvng/v1alpha1/aksnpvirtualnodegroup
+  labels:
+    testing.upbound.io/example-name: example
+  name: example
+spec:
+  forProvider:
+    name: testVng
+    oceanId: o-123456
+    tags:
+      tagKey: env
+      tagValue: dev

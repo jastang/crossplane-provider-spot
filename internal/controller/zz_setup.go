@@ -10,7 +10,9 @@ import (
 	"github.com/upbound/upjet/pkg/controller"
 
 	aksnp "github.com/spot/provider-spot/internal/controller/aksnp/aksnp"
+	aksnpvirtualnodegroup "github.com/spot/provider-spot/internal/controller/aksnpvng/aksnpvirtualnodegroup"
 	aws "github.com/spot/provider-spot/internal/controller/oceanaws/aws"
+	awslaunchspec "github.com/spot/provider-spot/internal/controller/oceanawsvng/awslaunchspec"
 	providerconfig "github.com/spot/provider-spot/internal/controller/providerconfig"
 )
 
@@ -19,7 +21,9 @@ import (
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	for _, setup := range []func(ctrl.Manager, controller.Options) error{
 		aksnp.Setup,
+		aksnpvirtualnodegroup.Setup,
 		aws.Setup,
+		awslaunchspec.Setup,
 		providerconfig.Setup,
 	} {
 		if err := setup(mgr, o); err != nil {
